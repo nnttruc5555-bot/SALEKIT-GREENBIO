@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Green Bio - S1P1 BY UN</title>
+    <link rel="icon" type="image/png" href="images/logo.png">
+    <meta name="description" content="Ứng dụng web tương tác đào tạo kỹ thuật canh tác lúa 3 miền và chi tiết 20 sản phẩm chuyên sâu cho Telesales Green Bio Việt Nam.">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="images/logo.png" alt="Green Bio Logo" class="logo-img">
+            </div>
+            <ul class="nav-links">
+                <li><a href="#seasons"><i class="fa-solid fa-calendar-days"></i> Lịch Vụ Mùa</a></li>
+                <li><a href="#lifecycle"><i class="fa-solid fa-circle-nodes"></i> Vòng Đời & Dịch Hại</a></li>
+                <li><a href="#fertilizer"><i class="fa-solid fa-flask"></i> Dinh Dưỡng Lúa</a></li>
+                <li><a href="#products"><i class="fa-solid fa-boxes-stacked"></i> Danh Mục Sản Phẩm</a></li>
+                <li><a href="#playbook"><i class="fa-solid fa-comments"></i> Kịch Bản & Từ Chối</a></li>
+                <li><a href="#calculator"><i class="fa-solid fa-calculator"></i> Tính Giá Tự Động</a></li>
+            </ul>
+            <div class="search-box">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" id="global-search" placeholder="Tìm tên thuốc, hoạt chất, dịch bệnh...">
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Header Section -->
+    <header class="hero-section">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <span class="badge">Học liệu nội bộ thực chiến</span>
+            <h1>CỔNG THÔNG TIN ĐÀO TẠO KỸ THUẬT & BÁN HÀNG LÚA</h1>
+            <p>Trực quan hóa vòng đời sinh học của cây lúa, đặc điểm dịch hại 3 Miền và cẩm nang kê đơn phối hợp thuốc của Green Bio Việt Nam.</p>
+            <div class="hero-buttons">
+                <a href="#seasons" class="btn btn-primary">Khám Phá Vụ Mùa</a>
+                <a href="#playbook" class="btn btn-secondary">Kịch Bản Bán Hàng</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- SECTION 1: INTERACTIVE SEASONS TIMELINE -->
+    <section id="seasons" class="seasons-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>LỊCH VỤ MÙA LÚA 3 MIỀN TRONG NĂM</h2>
+                <div class="divider"></div>
+                <p>Nhấp chọn từng Miền để xem dải thời gian mùa vụ và các đợt bão lũ ngập mặn đặc trưng trong 12 tháng.</p>
+            </div>
+
+            <!-- Region Selectors -->
+            <div class="region-selectors">
+                <button class="region-btn active" data-region="all">Tất Cả Các Miền</button>
+                <button class="region-btn" data-region="bac">Miền Bắc</button>
+                <button class="region-btn" data-region="trung">Miền Trung</button>
+                <button class="region-btn" data-region="nam">Miền Nam</button>
+            </div>
+
+            <!-- Timeline Grid Card -->
+            <div class="timeline-container glass-card">
+                <!-- Months Bar -->
+                <div class="months-row">
+                    <div class="label-col">Tháng</div>
+                    <div class="months-grid">
+                        <div class="month-cell" data-month="1">1</div>
+                        <div class="month-cell" data-month="2">2</div>
+                        <div class="month-cell" data-month="3">3</div>
+                        <div class="month-cell" data-month="4">4</div>
+                        <div class="month-cell" data-month="5">5</div>
+                        <div class="month-cell" data-month="6">6</div>
+                        <div class="month-cell" data-month="7">7</div>
+                        <div class="month-cell storm-month" data-month="8" title="Mùa mưa bão & lũ lụt">8 🌧️</div>
+                        <div class="month-cell storm-month" data-month="9" title="Mùa mưa bão & lũ lụt">9 🌧️</div>
+                        <div class="month-cell storm-month" data-month="10" title="Mùa mưa bão & lũ lụt">10 🌧️</div>
+                        <div class="month-cell" data-month="11">11</div>
+                        <div class="month-cell" data-month="12">12</div>
+                    </div>
+                </div>
+
+                <!-- Region Rows -->
+                <div class="regions-rows">
+                    <!-- Bắc -->
+                    <div class="region-row" data-region-row="bac">
+                        <div class="label-col region-name">⛰️ Miền Bắc<span class="region-sub">Cận nhiệt • 2 vụ chính</span></div>
+                        <div class="timeline-lane">
+                            <!-- Vụ Xuân -->
+                            <div class="season-block color-xuam" style="grid-column: 3 / span 4;">
+                                🌱 VỤ XUÂN (T3 - T6)
+                            </div>
+                            <!-- Vụ Mùa -->
+                            <div class="season-block color-mua" style="grid-column: 7 / span 4;">
+                                🌾 VỤ MÙA (T7 - T10)
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Trung -->
+                    <div class="region-row" data-region-row="trung">
+                        <div class="label-col region-name">🌊 Miền Trung<span class="region-sub">Bão lũ • Khắc nghiệt</span></div>
+                        <div class="timeline-lane">
+                            <!-- Đông Xuân -->
+                            <div class="season-block color-dx" style="grid-column: 1 / span 3;">
+                                ☀️ ĐÔNG XUÂN (T1 - T3)
+                            </div>
+                            <div class="season-block color-dx" style="grid-column: 11 / span 2;">
+                                ☀️ ĐÔNG XUÂN (T11 - T12)
+                            </div>
+                            <!-- Hè Thu -->
+                            <div class="season-block color-ht" style="grid-column: 4 / span 3;">
+                                🌧️ HÈ THU (T4 - T6)
+                            </div>
+                            <!-- Thu Đông -->
+                            <div class="season-block color-td" style="grid-column: 7 / span 3;">
+                                🍂 THU ĐÔNG (T7 - T9)
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Nam -->
+                    <div class="region-row" data-region-row="nam">
+                        <div class="label-col region-name">🛶 Miền Nam<span class="region-sub">Phù sa • 3 vụ đều đặn</span></div>
+                        <div class="timeline-lane">
+                            <!-- Đông Xuân -->
+                            <div class="season-block color-dx" style="grid-column: 1 / span 3;">
+                                ☀️ ĐÔNG XUÂN (T1 - T3)
+                            </div>
+                            <div class="season-block color-dx" style="grid-column: 11 / span 2;">
+                                ☀️ ĐÔNG XUÂN (T11 - T12)
+                            </div>
+                            <!-- Hè Thu -->
+                            <div class="season-block color-ht" style="grid-column: 4 / span 3;">
+                                🌧️ HÈ THU (T4 - T6)
+                            </div>
+                            <!-- Thu Đông -->
+                            <div class="season-block color-td" style="grid-column: 7 / span 3;">
+                                🍂 THU ĐÔNG (T7 - T9)
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+            <!-- Legend and Info -->
+            <div class="seasons-info">
+                <div class="info-card">
+                    <span class="legend-color-box color-dx"></span>
+                    <span class="legend-text">Vụ Đông Xuân (Vàng)</span>
+                </div>
+                <div class="info-card">
+                    <span class="legend-color-box color-ht"></span>
+                    <span class="legend-text">Vụ Hè Thu (Xanh lam)</span>
+                </div>
+                <div class="info-card">
+                    <span class="legend-color-box color-td"></span>
+                    <span class="legend-text">Vụ Thu Đông (Cam)</span>
+                </div>
+                <div class="info-card">
+                    <span class="legend-color-box color-xuam"></span>
+                    <span class="legend-text">Vụ Xuân - Bắc (Xanh lá mạ)</span>
+                </div>
+                <div class="info-card">
+                    <span class="legend-color-box color-mua"></span>
+                    <span class="legend-text">Vụ Mùa - Bắc (Xanh ngọc)</span>
+                </div>
+                <div class="info-card">
+                    <span class="legend-color-box" style="border-color: #ef4444; color: #ef4444; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: 800; background: rgba(239, 68, 68, 0.1);">🌧️</span>
+                    <span class="legend-text">Tháng 8 - 10: Mùa mưa bão & lũ lụt</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 2: INTERACTIVE LIFECYCLE & PEST TIMELINE -->
+    <section id="lifecycle" class="lifecycle-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>VÒNG ĐỜI SINH TRƯỞNG & TÁC NHÂN GÂY HẠI LÚA</h2>
+                <div class="divider"></div>
+                <p>Theo dõi tiến trình sinh học 5 giai đoạn chính của cây lúa. Click vào từng giai đoạn để xem các dịch hại nguy hiểm và thuốc Green Bio đặc trị.</p>
+            </div>
+
+            <!-- Lifecycle Navigation Chain -->
+            <div class="lifecycle-chain">
+                <div class="lifecycle-node active" data-stage="0">
+                    <div class="stage-num">1</div>
+                    <div class="stage-name">Giai Đoạn Mạ<br><span>(0 - 15 NSS)</span></div>
+                </div>
+                <div class="lifecycle-node" data-stage="1">
+                    <div class="stage-num">2</div>
+                    <div class="stage-name">Đẻ Nhánh Rộ<br><span>(15 - 40 NSS)</span></div>
+                </div>
+                <div class="lifecycle-node" data-stage="2">
+                    <div class="stage-num">3</div>
+                    <div class="stage-name">Làm Đòng<br><span>(40 - 55 NSS)</span></div>
+                </div>
+                <div class="lifecycle-node" data-stage="3">
+                    <div class="stage-num">4</div>
+                    <div class="stage-name">Trổ Bông<br><span>(60 - 75 NSS)</span></div>
+                </div>
+                <div class="lifecycle-node" data-stage="4">
+                    <div class="stage-num">5</div>
+                    <div class="stage-name">Lúa Chín<br><span>(75+ NSS)</span></div>
+                </div>
+            </div>
+
+            <!-- Stage Display Card -->
+            <div class="stage-display glass-card" id="stage-display-card">
+                <!-- Content will be dynamically populated by JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 3: FERTILIZER AND NUTRITION MAP -->
+    <section id="fertilizer" class="fertilizer-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>QUY TRÌNH DINH DƯỠNG & BẢO VỆ CÂY LÚA CHUẨN</h2>
+                <div class="divider"></div>
+                <p>Phân tích chế độ bón phân Nền Tảng (Đa lượng) và Truyền nước biển (Phân bón lá vi lượng) tối ưu năng suất.</p>
+            </div>
+
+            <div class="fertilizer-layout">
+                <!-- Left: Fertilizer visual chart -->
+                <div class="fertilizer-card glass-card">
+                    <h3>PHÂN LOẠI DINH DƯỠNG LÚA TRỰC QUAN</h3>
+                    <div class="fertilizer-grid">
+                        <div class="f-type-box">
+                            <div class="f-icon color-red"><i class="fa-solid fa-cubes"></i></div>
+                            <h4>1. Vô Cơ (Hóa Học)</h4>
+                            <p class="f-meta">= Cơm Ăn Nhanh</p>
+                            <p>Tác dụng nhanh, mạnh nhưng dễ gây chai đất, xì phèn nếu bón quá liều.</p>
+                        </div>
+                        <div class="f-type-box">
+                            <div class="f-icon color-green"><i class="fa-solid fa-seedling"></i></div>
+                            <h4>2. Hữu Cơ</h4>
+                            <p class="f-meta">= Cơm Nhà Nấu</p>
+                            <p>Tác dụng chậm, bền, cải tạo đất tơi xốp, giữ độ ẩm cho đất lâu bền.</p>
+                        </div>
+                        <div class="f-type-box">
+                            <div class="f-icon color-blue"><i class="fa-solid fa-microchip"></i></div>
+                            <h4>3. Sinh Học (Vi Sinh)</h4>
+                            <p class="f-meta">= Men Tiêu Hóa</p>
+                            <p>Tiêu diệt nấm bệnh hại rễ, phân hủy rơm rạ mục tránh ngộ độc hữu cơ.</p>
+                        </div>
+                        <div class="f-type-box">
+                            <div class="f-icon color-gold"><i class="fa-solid fa-syringe"></i></div>
+                            <h4>4. Phân Bón Lá</h4>
+                            <p class="f-meta">= Truyền Nước Biển</p>
+                            <p>Cập cứu cây rễ hư, ngập úng, bổ sung nhanh vi lượng hấp thụ qua mô lá.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Fertilizer stages -->
+                <div class="fertilizer-stages glass-card">
+                    <h3>5 ĐỢT BÓN PHÂN LÚA CHUẨN KỸ THUẬT</h3>
+                    <div class="f-stages-list">
+                        <div class="f-stage-item">
+                            <span class="stage-badge">Đợt 1</span>
+                            <div>
+                                <strong>Bón Lót (Trước sạ/cấy):</strong> Cải tạo đất phèn chua bằng Lân nung chảy + Vôi + Phân hữu cơ.
+                            </div>
+                        </div>
+                        <div class="f-stage-item">
+                            <span class="stage-badge">Đợt 2</span>
+                            <div>
+                                <strong>Thúc đợt 1 (7-10 NSS):</strong> Kích bộ rễ lúa xanh khỏe, hồi phục nhanh sau gieo. Ưu tiên bón Đạm + Lân.
+                            </div>
+                        </div>
+                        <div class="f-stage-item">
+                            <span class="stage-badge">Đợt 3</span>
+                            <div>
+                                <strong>Thúc đợt 2 (18-22 NSS):</strong> Đẻ nhánh tối đa, nuôi chồi con mập mạp. Bón Đạm + Lân + Kali nhẹ.
+                            </div>
+                        </div>
+                        <div class="f-stage-item">
+                            <span class="stage-badge">Đợt 4</span>
+                            <div>
+                                <strong>Bón Đón Đòng (40-45 NSS):</strong> Quyết định số hạt trên bông lúa. Bón Kali cao + Đạm vừa phải.
+                            </div>
+                        </div>
+                        <div class="f-stage-item">
+                            <span class="stage-badge">Đợt 5</span>
+                            <div>
+                                <strong>Nuôi Hạt (Sau trổ):</strong> Phun xịt dưỡng lá đòng cờ bằng phân bón lá (Kali hữu cơ trắng, Amino Acid).
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 4: PRODUCT DIRECTORY -->
+    <section id="products" class="products-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>DANH MỤC 20 SẢN PHẨM GREEN BIO</h2>
+                <div class="divider"></div>
+                <p>Khám phá thông số chi tiết, sơ đồ hóa học, liều lượng phun và kịch bản upsell thực chiến của từng sản phẩm.</p>
+            </div>
+
+            <!-- Product Category Filters -->
+            <div class="category-filters">
+                <button class="filter-btn active" data-filter="all">Tất Cả Sản Phẩm</button>
+                <button class="filter-btn" data-filter="Thuốc trừ sâu">Thuốc Trừ Sâu</button>
+                <button class="filter-btn" data-filter="Thuốc trừ bệnh">Thuốc Trừ Bệnh</button>
+                <button class="filter-btn" data-filter="Phân bón lá">Dinh Dưỡng & Lá</button>
+                <button class="filter-btn" data-filter="Chế phẩm sinh học">Chế Phẩm Sinh Học</button>
+            </div>
+
+            <!-- Product Grid -->
+            <div class="products-grid" id="products-grid-container">
+                <!-- Products dynamically rendered by JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 5: INTERACTIVE SALES PLAYBOOK -->
+    <section id="playbook" class="playbook-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>CẨM NANG TELE-SALES & XỬ LÝ TỪ CHỐI TƯƠNG TÁC</h2>
+                <div class="divider"></div>
+                <p>Học thuộc kịch bản chốt sales 7 bước, bộ câu hỏi khai thác nỗi đau và mẫu đối thoại dập lửa khi khiếu nại.</p>
+            </div>
+            
+            <div class="playbook-container glass-card">
+                <!-- Sidebar Tabs -->
+                <div class="playbook-tabs">
+                    <button class="playbook-tab-btn active" data-tab="steps">Kịch Bản 7 Bước</button>
+                    <button class="playbook-tab-btn" data-tab="objections">Xử Lý Từ Chối</button>
+                    <button class="playbook-tab-btn" data-tab="complaints">Khiếu Nại Kỹ Thuật</button>
+                </div>
+                
+                <!-- Content Pane -->
+                <div class="playbook-content" id="playbook-content-pane">
+                    <!-- JS will load content -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 6: INTERACTIVE PRICING CALCULATOR -->
+    <section id="calculator" class="calculator-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>CÔNG CỤ TÍNH GIÁ & QUY ĐỔI QUÀ TẶNG</h2>
+                <div class="divider"></div>
+            </div>
+            
+            <div class="calculator-grid glass-card">
+                <!-- Inputs Side -->
+                <div class="calc-inputs-side">
+                    <h3>NHẬP THÔNG TIN ĐƠN HÀNG</h3>
+                    <div class="input-group">
+                        <label for="calc-type">Loại Đơn Hàng (Giá bán lẻ 1 chai/bộ combo. Giá sỉ số lượng xem trong bảng giá chính thức)</label>
+                        <select id="calc-type">
+                            <!-- Các Combo S1 & Pas 1 được ưu tiên lên đầu -->
+                            <option value="capcheo">Cặp Chéo S1 + Pas 1 (1 S1 + 1 Pas 1) - 988.000đ</option>
+                            <option value="combo3">Combo 3 (Boom Super + Canxi Bo + 2 Pas 1) - 1.968.000đ</option>
+                            <option value="combo4">Combo 4 (Vô Gạo 95 + Boom Super + 2 Pas 1) - 2.018.000đ</option>
+                            <!-- Các Combo dinh dưỡng khác -->
+                            <option value="combo1a">Combo 1A (Dinh dưỡng - Cách 1) - 1.360.000đ</option>
+                            <option value="combo1b">Combo 1B (Dinh dưỡng - Cách 2) - 1.330.000đ</option>
+                            <option value="combo2">Combo 2 (Boom Super + Canxi Bo + Lân Bio 52) - 1.300.000đ</option>
+                            <!-- Bán lẻ lẻ các loại -->
+                            <option value="s1_retail">Lẻ 1 chai S1 (Alantic trừ sâu) - 520.000đ</option>
+                            <option value="pas1_retail">Lẻ 1 chai Pas 1 (Azol trừ bệnh) - 520.000đ</option>
+                            <option value="pas2_retail">Lẻ 1 chai Pas 2 (Fen Super trừ bệnh) - 490.000đ</option>
+                            <option value="canxi_retail">Lẻ 1 chai Canxi Bo hữu cơ - 490.000đ</option>
+                            <option value="vogao_retail">Lẻ 1 chai Vô Gạo 95 - 540.000đ</option>
+                            <option value="boom_retail">Lẻ 1 chai Boom Super - 490.000đ</option>
+                            <option value="lan52_retail">Lẻ 1 chai Lân Bio 52 - 390.000đ</option>
+                            <option value="thanho_retail">Lẻ 1 chai Thần Hổ X10 - 90.000đ</option>
+                            <option value="tricho_humix_retail">Lẻ 1 gói Tricho Humix (500g) - 115.000đ</option>
+                            <option value="powup_retail">Lẻ 1 gói Pow Up (12g) - 20.000đ</option>
+                            <option value="f90_retail">Lẻ 1 chai Organic F90 (1L) - 425.000đ</option>
+                            <option value="roota_retail">Lẻ 1 chai Oligo Roota (1L) - 300.000đ</option>
+                            <option value="roota_can_retail">Lẻ 1 can Oligo Roota (5L) - 1.350.000đ</option>
+                            <option value="r95_retail">Lẻ 1 kg Quản lý lúa lộn R95 - 525.000đ</option>
+                            <option value="tricho_bio_retail">Lẻ 1 gói Tricho Bio (1kg) - 245.000đ</option>
+                            <option value="no3_retail">Lẻ 1 chai No.3 (500ml) - 510.000đ</option>
+                            <option value="no5_retail">Lẻ 1 chai No.5 (500ml) - 315.000đ</option>
+                            <option value="lion_super_humic_retail">Lẻ 1 túi Lion Super Humic (1kg) - 75.000đ</option>
+                            <option value="lion_sop_retail">Lẻ 1 túi Lion SOP Kali Sunfat (1kg) - 120.000đ</option>
+                            <option value="sct07_retail">Lẻ 1 chai SCT 07 (500ml) - 170.000đ</option>
+                            <option value="combi_retail">Lẻ 1 gói Vi lượng Combi Ý (25g) - 35.000đ</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label for="calc-qty">Số Lượng Đặt Hàng (Đơn vị / Bộ)</label>
+                        <input type="number" id="calc-qty" value="1" min="1">
+                    </div>
+                    <div class="input-group">
+                        <label for="calc-ha">Diện Tích Đất Ruộng Khách Có (Hécta)</label>
+                        <input type="number" id="calc-ha" value="2" min="1">
+                    </div>
+                </div>
+                
+                <!-- Results Side -->
+                <div class="calc-results-side">
+                    <h3>KẾT QUẢ TÍNH TOÁN</h3>
+                    <div class="res-row">
+                        <span>Giá Bán Lẻ Gốc:</span>
+                        <strong id="res-base-price">0đ</strong>
+                    </div>
+                    <div class="res-row">
+                        <span>Giá Trợ Giá Khuyến Mãi:</span>
+                        <strong id="res-promo-price" class="color-gold">0đ</strong>
+                    </div>
+                    <div class="res-row">
+                        <span>Số Tiền Tiết Kiệm:</span>
+                        <strong id="res-savings">0đ</strong>
+                    </div>
+                    <div class="res-row">
+                        <span>Quà Tặng Tự Động Kèm Theo:</span>
+                        <strong id="res-gifts" style="color: #4ade80;">Không có</strong>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRODUCT DETAILS MODAL -->
+    <div class="modal-overlay" id="product-modal">
+        <div class="modal-card glass-card">
+            <button class="modal-close-btn" id="modal-close"><i class="fa-solid fa-xmark"></i></button>
+            <div class="modal-body" id="modal-content-body">
+                <!-- Content dynamically populated by JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <p>© 2026 GREENBIO.VN - TEAM SALE NEW PAS1 + S1 SÂU , ĐẠO ÔN LÚA - UN</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
