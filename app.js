@@ -243,10 +243,10 @@ const combosData = [
         ],
         engineerView: "Canxi Bo chelate hoạt hóa dai cuống bông gié tăng khả năng thụ phấn không bị nghẹn bông đầu bông. S1 + Pas 1 diệt sâu bệnh bọc đòng lúa.",
         recipe: [
-            "⚠️ LƯU Ý PHUN TRỘN: Dinh dưỡng Canxi Bo hòa trộn tương thích rất tốt với thuốc bệnh Pas 1 (Azol 450SC), pha vào phuy xịt bình thường để dưỡng đòng và ngừa bệnh.",
-            "⚠️ THUỐC SÂU S1 BẮT BUỘC PHẢI PHUN RIÊNG BIỆT (XỊT RIÊNG): Tuyệt đối không trộn chung Canxi Bo với thuốc sâu hóa học S1 (Alantic) để tránh phản ứng phân hủy hoạt chất và kết tủa."
+            "⚠️ LƯU Ý PHUN TRỘN: Dinh dưỡng Canxi Bo hòa trộn tương thích rất tốt với thuốc sâu hóa học S1 (Alantic), pha vào phuy xịt bình thường để dưỡng đòng và ngừa bệnh.",
+            "⚠️ THUỐC BỆNH PAS.1 BẮT BUỘC PHẢI PHUN RIÊNG BIỆT (XỊT RIÊNG): Tuyệt đối không trộn chung Canxi Bo với thuốc Thuốc bệnh Pas 1 (Azol 450SC) để tránh phản ứng phân hủy hoạt chất và kết tủa."
         ],
-        compatibility: "Canxi Bo không được phối trộn chung with thuốc trừ sâu S1. Chỉ được pha chung với thuốc bệnh Pas 1 hoặc phun riêng lẻ.",
+        compatibility: "Canxi Bo không được phối trộn chung with thuốc bệnh Pas.1. Chỉ được pha chung với thuốc sâu S1 hoặc phun riêng lẻ.",
         image: "images/canxi.png",
         images: ["images/canxi.png", "images/alantic.png", "images/azol.png"],
         actionId: "combo2",
@@ -425,7 +425,7 @@ const combosData = [
         ],
         engineerView: "Phối hợp dinh dưỡng làm đòng (Boom Super, Canxi Bo) giúp bông lúa trổ thoát bẹ nhanh không nghẹn bông; kết hợp 2 chai Pas 1 đặc trị nấm đạo ôn cổ bông quét sạch bào tử nấm rình rập trước trổ.",
         recipe: [
-            "⚠️ LƯU Ý PHUN TRỘN: Dinh dưỡng Canxi Bo và Boom Super hòa trộn tương thích rất tốt với thuốc bệnh Pas 1 (Azol 450SC) dạng sữa SC mát mẻ. Hòa tan thuốc nấm Pas 1 trước, sau đó trút Canxi Bo và Boom Super vào bình khuấy đều xịt ngừa cử trước trổ."
+            "⚠️ LƯU Ý PHUN TRỘN: Dinh dưỡng Canxi Bo và Boom Super hòa trộn tương thích rất tốt với nhau, không pha Pas 1 với Canxi tránh kết tủa. Có thể pha Pas 1 với Boom Super. "
         ],
         compatibility: "Tương thích pha chung 100% cực tốt. Tránh phun lúc hoa lúa đang mở thụ phấn rộ trưa nắng nóng.",
         image: "images/azol.png",
