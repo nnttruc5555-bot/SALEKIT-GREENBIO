@@ -500,7 +500,7 @@ window.openPestModal = function(pestId) {
                         ${pest.solution}
                     </p>
                     ${pest.productLink ? `
-                        <button class="pest-card-btn" style="margin-top: 15px; width: 100%; text-align: center; display: block; padding: 10px; font-weight: 600;" onclick="openProductModal('${pest.productLink}')">
+                        <button class="pest-card-btn" style="margin-top: 15px; width: 100%; text-align: center; display: block; padding: 10px; font-weight: 600;" onclick="navigateToProduct('${pest.productLink}')">
                             <i class="fa-solid fa-prescription-bottle-medical"></i> Xem Chi Tiết Thuốc Đặc Trị
                         </button>
                     ` : ''}
@@ -521,12 +521,12 @@ window.renderPests = function() {
         "pest_sau_cuon_la": { name: "ALANTIC 140SC (S1)", id: 3 },
         "pest_dao_on_la": { name: "AZOL 450SC (Pas 1)", id: 1 },
         "pest_sau_duc_than": { name: "ALANTIC 140SC (S1)", id: 3 },
-        "pest_dao_on_co_bong": { name: "AZOL 450SC (Pas 1)", id: 1 },
+        "pest_dao_on_co": { name: "AZOL 450SC (Pas 1)", id: 1 },
         "pest_sau_phao": { name: "ALANTIC 140SC (S1)", id: 3 },
         "pest_muoi_hanh": { name: "ALANTIC 140SC (S1)", id: 3 },
         "pest_lem_lep_hat": { name: "FEN SUPER 250SC (Pas 2)", id: 2 },
         "pest_nghet_re": { name: "OLIGO ROOTA & TRICHO BIO", id: 11 },
-        "pest_bac_la_vi_khuan": { name: "No.5 TINH DẦU QUẾ", id: 15 }
+        "pest_bac_la": { name: "No.5 TINH DẦU QUẾ", id: 15 }
     };
     
     pestsData.forEach(p => {
@@ -706,6 +706,12 @@ window.applyComboToCalc = function(actionId) {
         // Switch to calculator module
         switchModule("module-calculator");
         
+        // Hide details modal if open
+        const modal = document.getElementById("product-modal");
+        if (modal) {
+            modal.classList.remove("active");
+        }
+        
         // Add a temporary highlight glow to the calculator results
         const calcCard = document.querySelector(".calculator-grid");
         if (calcCard) {
@@ -737,6 +743,12 @@ window.applyUpsellCombo = function(comboId) {
         calculatePricing();
         // Switch to calculator module
         switchModule("module-calculator");
+        
+        // Hide details modal if open
+        const modal = document.getElementById("product-modal");
+        if (modal) {
+            modal.classList.remove("active");
+        }
         
         // Add a temporary highlight glow to the calculator results
         const calcCard = document.querySelector(".calculator-grid");
@@ -1236,6 +1248,7 @@ function renderProducts(filterCat = "all", searchQuery = "") {
         const card = document.createElement("div");
         const isCore = (p.id == 3 || p.id == 1);
         card.className = "product-card glass-card" + (isCore ? " core-product-highlight" : "");
+        card.id = `product-card-${p.id}`;
         
         const isPesticide = p.category.includes("sâu") || p.category.includes("bệnh");
         const capColor = isPesticide ? "#ef4444" : "#4ade80";
@@ -1365,6 +1378,39 @@ window.openProductModal = function(prodId) {
     modal.classList.add("active");
 };
 
+// Navigate from Pest Modal to Product Catalog Card context
+window.navigateToProduct = function(prodId) {
+    // 1. Close the current modal
+    const modal = document.getElementById("product-modal");
+    if (modal) {
+        modal.classList.remove("active");
+    }
+    
+    // 2. Switch to Solutions tab
+    window.switchModule("module-solutions");
+    
+    // 3. Scroll to the product card
+    setTimeout(() => {
+        const cardElement = document.getElementById(`product-card-${prodId}`);
+        if (cardElement) {
+            cardElement.scrollIntoView({ behavior: "smooth", block: "center" });
+            
+            // Add high premium flash highlight
+            cardElement.classList.add("highlight-flash");
+            setTimeout(() => {
+                cardElement.classList.remove("highlight-flash");
+            }, 2500);
+            
+            // On mobile/tablet screens, open the product details modal
+            if (window.innerWidth <= 768) {
+                setTimeout(() => {
+                    openProductModal(prodId);
+                }, 400);
+            }
+        }
+    }, 150);
+};
+
 // Render Stage display Card (with recommended product tags)
 function renderStageCard(stageIdx) {
     const stage = stagesData[stageIdx];
@@ -1430,9 +1476,10 @@ function renderPlaybook(tabName) {
     
     if (tabName === "steps") {
         pane.innerHTML = `<h3>KỊCH BẢN TELE-SALES 7 BƯỚC THỰC CHIẾN</h3>`;
-        playbookData.steps.forEach(s => {
+        playbookData.steps.forEach((s, index) => {
             const block = document.createElement("div");
             block.className = "playbook-step-card";
+            block.setAttribute("onclick", `handleStepClick(this, ${index})`);
             block.innerHTML = `
                 <h4>${s.title}</h4>
                 <p style="color: #4a6042; font-size: 0.9rem; margin-bottom: 0.8rem;">${s.desc}</p>
@@ -1497,8 +1544,63 @@ function renderPlaybook(tabName) {
     }
 }
 
+window.handleStepClick = function(element, index) {
+    if (window.innerWidth <= 768) {
+        window.openPlaybookModal(index);
+    }
+};
+
+window.openPlaybookModal = function(stepIndex) {
+    const s = playbookData.steps[stepIndex];
+    if (!s) return;
+    
+    const modal = document.getElementById("product-modal");
+    const body = document.getElementById("modal-content-body");
+    
+    body.innerHTML = `
+        <div class="playbook-modal-content" style="text-align: left; padding: 10px;">
+            <span class="playbook-modal-badge" style="background: rgba(112, 173, 71, 0.15); color: #375623; padding: 4px 12px; border-radius: 12px; font-size: 0.8rem; font-weight: 700;">Bước ${stepIndex + 1} / 7</span>
+            <h2 style="font-size: 1.5rem; color: #203811; margin-top: 10px; margin-bottom: 15px;">${s.title}</h2>
+            <div class="divider" style="height: 2px; background: rgba(112, 173, 71, 0.2); margin-bottom: 15px;"></div>
+            
+            <div class="playbook-modal-desc" style="color: #4a6042; font-size: 0.95rem; line-height: 1.5; margin-bottom: 20px; background: rgba(112, 173, 71, 0.05); padding: 15px; border-radius: 10px; border-left: 4px solid #70ad47;">
+                <strong>Nhiệm vụ & Hướng dẫn:</strong><br>
+                ${s.desc}
+            </div>
+            
+            <div class="playbook-modal-script">
+                <strong style="color: #d84315; display: block; margin-bottom: 8px; font-size: 1rem;"><i class="fa-solid fa-comments"></i> Lời thoại Telesales đối đáp mẫu:</strong>
+                <div class="script-dialogue" style="font-size: 1.05rem; line-height: 1.6; color: #1f2937; background: #ffffff; border: 1px solid rgba(112, 173, 71, 0.25); padding: 15px; border-radius: 10px; font-style: italic; white-space: pre-line; box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);">
+                    ${s.script}
+                </div>
+            </div>
+        </div>
+    `;
+    modal.classList.add("active");
+};
+
 // Toggle Accordion Panel
 window.toggleAccordion = function(element) {
+    if (window.innerWidth <= 768) {
+        // Show in full-screen modal on mobile
+        const q = element.querySelector("span").innerText;
+        const bodyText = element.nextElementSibling.querySelector(".accordion-content-inner").innerHTML;
+        
+        const modal = document.getElementById("product-modal");
+        const modalBody = document.getElementById("modal-content-body");
+        
+        modalBody.innerHTML = `
+            <div class="playbook-modal-content" style="text-align: left; padding: 10px;">
+                <h2 style="font-size: 1.3rem; color: #203811; margin-bottom: 15px; line-height: 1.4;">${q}</h2>
+                <div class="divider" style="height: 2px; background: rgba(112, 173, 71, 0.2); margin-bottom: 15px;"></div>
+                <div class="playbook-modal-qa-details" style="line-height: 1.6; font-size: 0.95rem;">
+                    ${bodyText}
+                </div>
+            </div>
+        `;
+        modal.classList.add("active");
+        return;
+    }
     const item = element.parentElement;
     const content = element.nextElementSibling;
     
@@ -2354,6 +2456,23 @@ document.addEventListener("DOMContentLoaded", () => {
                     }
                 });
             }
+
+            // Sync with mobile vertical cards
+            const mobileCards = document.querySelectorAll(".mobile-region-card");
+            if (region === "all") {
+                mobileCards.forEach(card => {
+                    card.classList.add("active");
+                });
+            } else {
+                mobileCards.forEach(card => {
+                    const cardReg = card.getAttribute("data-mobile-region");
+                    if (cardReg === region) {
+                        card.classList.add("active");
+                    } else {
+                        card.classList.remove("active");
+                    }
+                });
+            }
         });
     });
     
@@ -2368,8 +2487,8 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
     
-    // 7. Products Filters Category Buttons
-    const filterButtons = document.querySelectorAll(".filter-btn");
+    // 7. Products Filters Category Buttons (Target only category-filters to avoid conflict with combo filters)
+    const filterButtons = document.querySelectorAll(".category-filters .filter-btn");
     filterButtons.forEach(btn => {
         btn.addEventListener("click", () => {
             filterButtons.forEach(b => b.classList.remove("active"));
@@ -2388,7 +2507,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (query.trim() !== "") {
             switchModule("module-solutions");
         }
-        const activeFilter = document.querySelector(".filter-btn.active") ? document.querySelector(".filter-btn.active").getAttribute("data-filter") : "all";
+        const activeFilter = document.querySelector(".category-filters .filter-btn.active") ? document.querySelector(".category-filters .filter-btn.active").getAttribute("data-filter") : "all";
         renderProducts(activeFilter, query);
     });
     
@@ -2484,4 +2603,32 @@ document.addEventListener("DOMContentLoaded", () => {
             switchModule(targetId);
         });
     });
+
+    // 14. Mobile Hamburger Sidebar Toggle
+    const mobileMenuToggle = document.getElementById("mobile-menu-toggle");
+    const sidebar = document.querySelector(".dashboard-sidebar");
+    const sidebarOverlay = document.getElementById("sidebar-overlay");
+    
+    if (mobileMenuToggle && sidebar && sidebarOverlay) {
+        mobileMenuToggle.addEventListener("click", () => {
+            sidebar.classList.add("open");
+            sidebarOverlay.classList.add("active");
+        });
+        
+        const closeSidebar = () => {
+            sidebar.classList.remove("open");
+            sidebarOverlay.classList.remove("active");
+        };
+        
+        sidebarOverlay.addEventListener("click", closeSidebar);
+        
+        // Close sidebar on click of navigation buttons (on mobile)
+        sidebarBtns.forEach(btn => {
+            btn.addEventListener("click", () => {
+                if (window.innerWidth <= 992) {
+                    closeSidebar();
+                }
+            });
+        });
+    }
 });

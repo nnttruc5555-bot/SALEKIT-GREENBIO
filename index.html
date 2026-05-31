@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google" content="notranslate">
     <title>Green Bio - S1P1 BY UN</title>
     <link rel="icon" type="image/png" href="images/logo.png">
     <meta name="description" content="Giao diện Dashboard đào tạo kỹ thuật canh tác lúa và danh mục sản phẩm chuyên sâu cho Telesales Green Bio Việt Nam.">
@@ -12,7 +13,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="notranslate">
     <div class="dashboard-layout">
         <!-- Sidebar Navigation Panel -->
         <aside class="dashboard-sidebar">
@@ -51,6 +52,9 @@
         <main class="dashboard-viewport">
             <!-- Header Search Bar -->
             <header class="dashboard-header">
+                <button class="mobile-menu-toggle" id="mobile-menu-toggle" title="Mở danh mục menu">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
                 <div class="header-welcome">
                     <span>Xin chào, <strong>Nhân viên Tư vấn</strong></span>
                 </div>
@@ -187,33 +191,94 @@
                         </div>
                     </div>
 
-                    <!-- Legend and Info -->
-                    <div class="seasons-info">
-                        <div class="info-card">
-                            <span class="legend-color-box color-dx"></span>
-                            <span class="legend-text">Vụ Đông Xuân (Vàng)</span>
+                    <!-- Vertical Timeline Calendar -->
+                    <div class="timeline-vertical-view">
+                        <!-- Bắc -->
+                        <div class="mobile-region-card glass-card active" data-mobile-region="bac">
+                            <div class="mobile-region-header"><i class="fa-solid fa-mountain"></i> MIỀN BẮC <span class="mobile-region-sub">Cận nhiệt • 2 vụ chính</span></div>
+                            <div class="mobile-season-list">
+                                <div class="mobile-season-item">
+                                    <div class="mobile-season-title color-xuam">🌱 VỤ XUÂN (T3 - T6)</div>
+                                    <div class="mobile-season-desc">Tiết xuân rét lạnh ẩm ướt, thích hợp cho sự phát triển của mạ non.</div>
+                                    <div class="mobile-season-pests">
+                                        <span class="pest-badge-title"><i class="fa-solid fa-bug"></i> Dịch hại chính:</span>
+                                        <span class="mobile-pest-tag">🐛 Đạo ôn, Bọ trĩ</span>
+                                    </div>
+                                </div>
+                                <div class="mobile-season-item">
+                                    <div class="mobile-season-title color-mua">🌾 VỤ MÙA (T7 - T10)</div>
+                                    <div class="mobile-season-desc">Thời tiết mưa bão lớn dập lá lúa, tạo điều kiện bệnh vi khuẩn phát triển.</div>
+                                    <div class="mobile-season-pests">
+                                        <span class="pest-badge-title"><i class="fa-solid fa-bug"></i> Dịch hại chính:</span>
+                                        <span class="mobile-pest-tag">🍂 Sâu cuốn lá, Bạc lá</span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="info-card">
-                            <span class="legend-color-box color-ht"></span>
-                            <span class="legend-text">Vụ Hè Thu (Xanh lam)</span>
+
+                        <!-- Trung -->
+                        <div class="mobile-region-card glass-card active" data-mobile-region="trung">
+                            <div class="mobile-region-header"><i class="fa-solid fa-water"></i> MIỀN TRUNG <span class="mobile-region-sub">Bão lũ • Khắc nghiệt</span></div>
+                            <div class="mobile-season-list">
+                                <div class="mobile-season-item">
+                                    <div class="mobile-season-title color-dx">☀️ VỤ ĐÔNG XUÂN (T11 - T3)</div>
+                                    <div class="mobile-season-desc">Gieo sạ trong thời tiết se lạnh đầu vụ, nắng nóng cuối vụ.</div>
+                                    <div class="mobile-season-pests">
+                                        <span class="pest-badge-title"><i class="fa-solid fa-bug"></i> Dịch hại chính:</span>
+                                        <span class="mobile-pest-tag">🦟 Rầy nâu, Bọ trĩ</span>
+                                    </div>
+                                </div>
+                                <div class="mobile-season-item">
+                                    <div class="mobile-season-title color-ht">🌧️ VỤ HÈ THU (T4 - T6)</div>
+                                    <div class="mobile-season-desc">Nắng nóng khô hạn, gió Tây Nam (gió Lào) thổi mạnh rát ruộng.</div>
+                                    <div class="mobile-season-pests">
+                                        <span class="pest-badge-title"><i class="fa-solid fa-bug"></i> Dịch hại chính:</span>
+                                        <span class="mobile-pest-tag">🦟 Rầy nâu, Bọ trĩ</span>
+                                    </div>
+                                </div>
+                                <div class="mobile-season-item">
+                                    <div class="mobile-season-title color-td">🍂 VỤ THU ĐÔNG (T7 - T9)</div>
+                                    <div class="mobile-season-desc">Mùa giông bão, lũ lụt bùng phát đạo ôn cổ bông và lép hạt cực nặng.</div>
+                                    <div class="mobile-season-pests">
+                                        <span class="pest-badge-title"><i class="fa-solid fa-bug"></i> Dịch hại chính:</span>
+                                        <span class="mobile-pest-tag">🥀 Đạo ôn cổ bông, Lép hạt</span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="info-card">
-                            <span class="legend-color-box color-td"></span>
-                            <span class="legend-text">Vụ Thu Đông (Cam)</span>
-                        </div>
-                        <div class="info-card">
-                            <span class="legend-color-box color-xuam"></span>
-                            <span class="legend-text">Vụ Xuân - Bắc (Xanh lá mạ)</span>
-                        </div>
-                        <div class="info-card">
-                            <span class="legend-color-box color-mua"></span>
-                            <span class="legend-text">Vụ Mùa - Bắc (Xanh ngọc)</span>
-                        </div>
-                        <div class="info-card">
-                            <span class="legend-color-box" style="border: 1.5px dashed #ef4444; background: rgba(239, 68, 68, 0.08); width: 22px; height: 22px; border-radius: 6px;"></span>
-                            <span class="legend-text">Dịch hại (Đỏ đứt)</span>
+
+                        <!-- Nam -->
+                        <div class="mobile-region-card glass-card active" data-mobile-region="nam">
+                            <div class="mobile-region-header"><i class="fa-solid fa-ship"></i> MIỀN NAM <span class="mobile-region-sub">Phù sa • 3 vụ đều đặn</span></div>
+                            <div class="mobile-season-list">
+                                <div class="mobile-season-item">
+                                    <div class="mobile-season-title color-dx">☀️ VỤ ĐÔNG XUÂN (T11 - T3)</div>
+                                    <div class="mobile-season-desc">Tiết trời ấm áp thuận lợi gieo sạ, lúa trúng mùa to hạt đẫy đà.</div>
+                                    <div class="mobile-season-pests">
+                                        <span class="pest-badge-title"><i class="fa-solid fa-bug"></i> Dịch hại chính:</span>
+                                        <span class="mobile-pest-tag">🦟 Muỗi hành, Rầy nâu</span>
+                                    </div>
+                                </div>
+                                <div class="mobile-season-item">
+                                    <div class="mobile-season-title color-ht">🌧️ VỤ HÈ THU (T4 - T6)</div>
+                                    <div class="mobile-season-desc">Mưa nhiều nóng ẩm, sâu bệnh và cháy lá bùng phát nhanh.</div>
+                                    <div class="mobile-season-pests">
+                                        <span class="pest-badge-title"><i class="fa-solid fa-bug"></i> Dịch hại chính:</span>
+                                        <span class="mobile-pest-tag">🥀 Đạo ôn lá, Bạc lá</span>
+                                    </div>
+                                </div>
+                                <div class="mobile-season-item">
+                                    <div class="mobile-season-title color-td">🍂 VỤ THU ĐÔNG (T7 - T9)</div>
+                                    <div class="mobile-season-desc">Gió mùa mưa dầm dề gây úng ngập bông lúa lép thối.</div>
+                                    <div class="mobile-season-pests">
+                                        <span class="pest-badge-title"><i class="fa-solid fa-bug"></i> Dịch hại chính:</span>
+                                        <span class="mobile-pest-tag">🌾 Đạo ôn cổ bông, Lép hạt</span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
+
                 </section>
 
                 <!-- Rice Growth Lifecycle Section -->
@@ -543,6 +608,9 @@
             </div>
         </main>
     </div>
+
+    <!-- Mobile Sidebar Backdrop Overlay -->
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
 
     <!-- MAIN INTERACTIVE DETAILS MODAL (Used for Products, Pests and Combos) -->
     <div class="modal-overlay" id="product-modal">
